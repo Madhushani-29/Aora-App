@@ -1,12 +1,10 @@
-/*import { useCreateMyUser } from '@/api/MyUserApi';
+import { useCreateMyUser } from '@/api/MyUserApi';
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom';*/
-
-import { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const AuthCallbackPage = () => {
-    /*const navigate = useNavigate();
+    const navigate = useNavigate();
     const { user } = useAuth0();
     const { createUser } = useCreateMyUser();
     const hasCreatedUser = useRef(false);
@@ -17,11 +15,7 @@ const AuthCallbackPage = () => {
             hasCreatedUser.current = true;
         }
         navigate("/");
-    }, [createUser, navigate, user]);*/
-
-    useEffect(() => {
-        console.log("User Creating !");
-    }, []);
+    }, [createUser, navigate, user]);
 
     return (
         <>Loading...</>
