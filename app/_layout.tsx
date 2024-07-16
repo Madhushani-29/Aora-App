@@ -11,6 +11,8 @@ import PoppinsRegular from "../assets/fonts/Poppins-Regular.ttf";
 import PoppinsSemiBold from "../assets/fonts/Poppins-SemiBold.ttf";
 import PoppinsThin from "../assets/fonts/Poppins-Thin.ttf";
 
+SplashScreen.preventAutoHideAsync();
+
 const RootLayout = () => {
   const [fontsLoaded, error] = useFonts({
     "Poppins-Black": PoppinsBlack,

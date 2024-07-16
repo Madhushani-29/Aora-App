@@ -13,7 +13,7 @@ import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
 
 type IconAssets = {
-  [key: string]: string;
+  [key: string]: any;
 };
 
 const icons: IconAssets = {
