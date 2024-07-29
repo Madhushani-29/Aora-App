@@ -11,25 +11,26 @@ import logout from "../assets/icons/logout.png";
 import eyeHide from "../assets/icons/eye-hide.png";
 import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
+import { ImageSourcePropType } from "react-native";
 
 type IconAssets = {
-  [key: string]: any;
+  [key: string]: ImageSourcePropType;
 };
 
 const icons: IconAssets = {
-  play,
-  bookmark,
-  home,
-  plus,
-  profile,
-  leftArrow,
-  menu,
-  search,
-  upload,
-  rightArrow,
-  logout,
-  eyeHide,
-  eye,
+  play: play as ImageSourcePropType,
+  bookmark: bookmark as ImageSourcePropType,
+  home: home as ImageSourcePropType,
+  plus: plus as ImageSourcePropType,
+  profile: profile as ImageSourcePropType,
+  leftArrow: leftArrow as ImageSourcePropType,
+  menu: menu as ImageSourcePropType,
+  search: search as ImageSourcePropType,
+  upload: upload as ImageSourcePropType,
+  rightArrow: rightArrow as ImageSourcePropType,
+  logout: logout as ImageSourcePropType,
+  eyeHide: eyeHide as ImageSourcePropType,
+  eye: eye as ImageSourcePropType,
 };
 
 export default icons;

@@ -2,7 +2,7 @@ import { View, Text, Image, ImageSourcePropType } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { icons } from '@/constants'
-import { colors } from '@/constants/Colors'
+import { colors } from '@/constants/colors'
 
 type TabIconProperties = {
   icon: ImageSourcePropType,
@@ -36,7 +36,7 @@ const TabLayout = () => {
     <>
       <Tabs
         screenOptions={{
-          //hide default tabbar title
+          //hide default tab title
           tabBarShowLabel: false,
           tabBarActiveTintColor: colors.tabBarIconActivateColor, 
           tabBarInactiveTintColor:colors.tabBarIconInactivateColor,

@@ -5,17 +5,20 @@ import path from "../assets/images/path.png";
 import logo from "../assets/images/logo.png";
 import logoSmall from "../assets/images/logo-small.png";
 import empty from "../assets/images/empty.png";
+import { ImageSourcePropType } from "react-native";
+
 type ImageAssets = {
-  [key: string]: string;
+  [key: string]: ImageSourcePropType;
 };
 
 const images: ImageAssets = {
-  profile,
-  thumbnail,
-  cards,
-  path,
-  logo,
-  logoSmall,
-  empty,
+  profile: profile as ImageSourcePropType,
+  thumbnail: thumbnail as ImageSourcePropType,
+  cards: cards as ImageSourcePropType,
+  path: path as ImageSourcePropType,
+  logo: logo as ImageSourcePropType,
+  logoSmall: logoSmall as ImageSourcePropType,
+  empty: empty as ImageSourcePropType,
 };
+
 export default images;

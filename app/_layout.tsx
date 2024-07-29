@@ -35,7 +35,10 @@ const RootLayout = () => {
 
   return (
     <Stack>
-      <Stack.Screen name='index' options={{ headerShown: true }} />
+      <Stack.Screen
+        name='index'
+        // hide the default app bar
+        options={{ headerShown: false }} />
     </Stack>
   )
 }
