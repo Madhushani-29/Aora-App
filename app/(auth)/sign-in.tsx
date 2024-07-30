@@ -7,27 +7,24 @@ import SignInForm from '@/forms/auth-forms/sign-in-form'
 
 const SignIn = () => {
   return (
-    
-      <SafeAreaView className='bg-blue-500 h-full'>
-        <ScrollView contentContainerStyle={{ height: '100%' }}>
-          <View
-            className='w-full h-full px-4 my-6 min-h-[85vh]'>
-            <Image
-              source={images.logo}
-              resizeMode='contain'
-              className='w-[115px] h-[34px]' />
-            <Text className='text-white font-psemibold text-2xl'>Sign up</Text>
-            <SignInForm />
-            <Text className='text-white text-sm text-center'>
-              Already have an account? {' '}
-              <Link href="/sign-up">
-                <Text className='text-secondary-100'>Login</Text></Link>
-            </Text>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-
+    <SafeAreaView className='bg-blue-500 h-full'>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View
+          className='w-full h-full px-4 my-6 min-h-[85vh]'>
+          <Image
+            source={images.logo}
+            resizeMode='contain'
+            className='w-[115px] h-[34px]' />
+          <Text className='text-white font-psemibold text-2xl'>Sign up</Text>
+          <SignInForm />
+          <Text className='text-white text-sm text-center'>
+            Already have an account? {' '}
+            <Link href="/sign-up">
+              <Text className='text-secondary-100'>Login</Text></Link>
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
-
 export default SignIn

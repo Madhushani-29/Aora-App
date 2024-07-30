@@ -14,9 +14,8 @@ const App = () => {
   return (
     <SafeAreaView className='bg-primary h-full'>
       <ScrollView
-        //full width must be scrollable
-        //specially mention since it muts be apply for the small screens also same
-        contentContainerStyle={{ height: '100%' }}>
+        //allow the content to grow and enable scrolling if it exceeds the viewport height
+        contentContainerStyle={{ flexGrow: 1 }}>
         <View
           className='w-full h-full  items-center px-4'>
           <Image
