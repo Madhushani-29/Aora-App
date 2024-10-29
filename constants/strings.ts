@@ -1,3 +1,1 @@
-export const strings = {
-  };
-  
+export const strings = {};

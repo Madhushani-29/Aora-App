@@ -3,9 +3,15 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from '@/constants'
 import { Link } from 'expo-router'
-import SignInForm from '@/forms/auth-forms/sign-in-form'
+import SignInForm from '@/forms/auth-forms/auth-form'
+import { AuthType } from '@/types/Types'
 
 const SignIn = () => {
+  const onSubmit = (data: AuthType) => {
+    console.log(data);
+
+  }
+
   return (
     <SafeAreaView className='bg-blue-500 h-full'>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -16,7 +22,7 @@ const SignIn = () => {
             resizeMode='contain'
             className='w-[115px] h-[34px]' />
           <Text className='text-white font-psemibold text-2xl'>Sign up</Text>
-          <SignInForm />
+          <SignInForm onSubmit={onSubmit} />
           <Text className='text-white text-sm text-center'>
             Already have an account? {' '}
             <Link href="/sign-up">

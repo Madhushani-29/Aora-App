@@ -1,33 +1,18 @@
-import { View, Alert, Button,  } from 'react-native'
+import { View, Alert, Button, } from 'react-native'
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInFormValidationSchema } from '@/validations/validationSchema';
 import TextFromField from '@/components/TextFromField';
-import { SignInFormDataType } from '@/types/Form Types';
+import { initialValueaAuthForm } from '@/constants/form-initial-values';
+import { AuthType } from '@/types/Types';
+import { AuthFormPropType } from '@/types/form-prop-type';
 
-//initial values
-const initialValue: SignInFormDataType = {
-  email: "",
-  userName: "",
-  password: "",
-};
-
-const SignInForm = () => {
+const AuthForm = ({ onSubmit }: AuthFormPropType) => {
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    defaultValues: initialValue,
+    defaultValues: initialValueaAuthForm,
     resolver: yupResolver(signInFormValidationSchema),
   });
-
-  const onSubmit = async (data: SignInFormDataType) => {
-    try {
-      console.log(data);
-      Alert.alert(JSON.stringify(data));
-      reset();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <View className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
@@ -97,4 +82,4 @@ const SignInForm = () => {
   );
 }
 
-export default SignInForm
+export default AuthForm
