@@ -1,15 +1,16 @@
-import { Control, FieldError} from "react-hook-form";
+import { Control, FieldError } from "react-hook-form";
 
 export type FormInputProps = {
-  name:string,
-  control:Control<any>, 
+  name: string;
+  control: Control<any>;
   label: string;
-  type:string;
+  type: string;
   error?: FieldError;
+  placeholder?: string;
 };
 
 export type CustomButtonProps = {
-  handlePress: () => void;
+  handlePress: (...args: any[]) => void;
   title: string;
   isLoading?: boolean;
   containerStyles?: string;
@@ -19,4 +20,12 @@ export type CustomButtonProps = {
 export type SubmitButtonProps = {
   title: string;
   isLoading?: boolean;
+};
+
+export type PasswordInputPorps = {
+  control: Control<any>;
+  error?: FieldError;
+  name: string;
+  label?: string;
+  placeholder?: string;
 };

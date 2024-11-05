@@ -1,6 +1,5 @@
 import CustomButton from '@/components/CustomButton';
-import { images } from '@/constants';
-import { colors } from '@/constants/colors';
+import { colors, images } from '@/constants';
 import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Image, ScrollView, Text, View } from 'react-native';
@@ -8,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 const App = () => {
   const handlePress = () => { 
-    router.push('./sign-in')
+    router.push('./sign-up')
   }
 
   return (
