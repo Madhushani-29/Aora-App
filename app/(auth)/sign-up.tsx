@@ -5,10 +5,12 @@ import { images } from '@/constants';
 import { Link } from 'expo-router';
 import { AuthSignInType } from '@/types/Types';
 import AuthSignUpForm from '@/forms/auth-forms/auth-sign-up-form';
+import { createUser } from '@/lib/appwrite';
 
 const SignUp = () => {
   const onSubmit = (data: AuthSignInType) => {
     console.log(data);
+    createUser();
   };
 
   return (
