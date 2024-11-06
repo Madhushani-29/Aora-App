@@ -3,13 +3,13 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import TextFromField from '@/components/TextFromField';
-import { AuthFormPropType } from '@/types/form-prop-type';
 import CustomButton from '@/components/CustomButton';
 import PasswordInputField from '@/components/PassportInputField';
 import { initialValueSignInForm } from '@/constants/form-initial-values';
 import { authSignInFormValidationSchema } from '@/validations/validationSchema';
+import { AuthSignInFormPropType, AuthSignUpFormPropType } from '@/types/form-prop-type';
 
-const AuthSignInForm = ({ onSubmit }: AuthFormPropType) => {
+const AuthSignInForm = ({ onSubmit, isLoading }: AuthSignInFormPropType) => {
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: initialValueSignInForm,
     resolver: yupResolver(authSignInFormValidationSchema),
@@ -31,7 +31,7 @@ const AuthSignInForm = ({ onSubmit }: AuthFormPropType) => {
         name="password"
         error={errors.password} />
       <View className="flex items-center justify-between">
-        <CustomButton title="Submit" handlePress={handleSubmit(onSubmit)} />
+        <CustomButton title="Submit" handlePress={handleSubmit(onSubmit)} isLoading={isLoading} />
       </View>
     </View>
   );

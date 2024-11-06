@@ -5,11 +5,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { authSignUpFormValidationSchema } from '@/validations/validationSchema';
 import TextFromField from '@/components/TextFromField';
 import { initialValueSignUpForm } from '@/constants/form-initial-values';
-import { AuthFormPropType } from '@/types/form-prop-type';
 import CustomButton from '@/components/CustomButton';
 import PasswordInputField from '@/components/PassportInputField';
+import { AuthSignUpFormPropType } from '@/types/form-prop-type';
 
-const AuthSignUpForm = ({ onSubmit }: AuthFormPropType) => {
+const AuthSignUpForm = ({ onSubmit, isLoading }: AuthSignUpFormPropType) => {
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: initialValueSignUpForm,
     resolver: yupResolver(authSignUpFormValidationSchema),
@@ -39,7 +39,7 @@ const AuthSignUpForm = ({ onSubmit }: AuthFormPropType) => {
         name="password"
         error={errors.password} />
       <View className="flex items-center justify-between">
-        <CustomButton title="Submit" handlePress={handleSubmit(onSubmit)} />
+        <CustomButton title="Submit" handlePress={handleSubmit(onSubmit)} isLoading={isLoading} />
       </View>
     </View>
   );

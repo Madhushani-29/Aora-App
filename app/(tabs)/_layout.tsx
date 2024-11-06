@@ -1,8 +1,7 @@
 import { View, Text, Image, ImageSourcePropType } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
-import { icons } from '@/constants'
-import { colors } from '@/constants/colors'
+import { colors, icons } from '@/constants'
 
 type TabIconProperties = {
   icon: ImageSourcePropType,

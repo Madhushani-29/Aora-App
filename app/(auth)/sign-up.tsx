@@ -1,16 +1,28 @@
-import { View, Text, ScrollView, Image } from 'react-native';
-import React from 'react';
+import { View, Text, ScrollView, Image, Alert } from 'react-native';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '@/constants';
-import { Link } from 'expo-router';
-import { AuthSignInType } from '@/types/Types';
+import { Link, router } from 'expo-router';
+import { AuthSignInType, AuthSignUpType } from '@/types/Types';
 import AuthSignUpForm from '@/forms/auth-forms/auth-sign-up-form';
 import { createUser } from '@/lib/appwrite';
 
 const SignUp = () => {
-  const onSubmit = (data: AuthSignInType) => {
-    console.log(data);
-    createUser();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async ({ email, password, userName }: AuthSignUpType) => {
+    setIsLoading(true);
+    try {
+      const result = await createUser({ email, password, userName });
+      // set it to global state
+      router.push("/home");
+    }
+    catch (error) {
+      Alert.alert("Error", (error as Error).message);
+    }
+    finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -22,7 +34,7 @@ const SignUp = () => {
             resizeMode='contain'
             className='w-[115px] h-[34px] mb-5' />
           <Text className='text-white font-psemibold text-2xl mb-5'>Sign up</Text>
-          <AuthSignUpForm onSubmit={onSubmit} />
+          <AuthSignUpForm onSubmit={onSubmit} isLoading={isLoading} />
           <Text className='text-white text-sm text-center mt-4'>
             Already have an account? {' '}
             <Link href="/sign-in">
