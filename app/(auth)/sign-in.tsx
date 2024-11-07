@@ -1,7 +1,7 @@
 import { View, Text, Image, ScrollView, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useState } from 'react'
-import { images } from '@/constants'
+import { images, strings } from '@/constants'
 import { Link, router } from 'expo-router'
 import { AuthSignInType, AuthSignUpType } from '@/types/Types'
 import AuthSignInForm from '@/forms/auth-forms/auth-sign-in-form'
@@ -35,12 +35,12 @@ const SignIn = () => {
             source={images.logo}
             resizeMode='contain'
             className='w-[115px] h-[34px] mb-5' />
-          <Text className='text-white font-psemibold text-2xl mb-5'>Log In</Text>
+          <Text className='text-white font-psemibold text-2xl mb-5'>{strings.logInText}</Text>
           <AuthSignInForm onSubmit={onSubmit} isLoading={isLoading} />
           <Text className='text-white text-sm text-center mt-4'>
-            Don't have an account? {' '}
+            {strings.notSignUpHelpText} {' '}
             <Link href="/sign-up">
-              <Text className='text-secondary-100'>Sign Up</Text></Link>
+              <Text className='text-secondary-100'>{strings.signUpText}</Text></Link>
           </Text>
         </View>
       </ScrollView>

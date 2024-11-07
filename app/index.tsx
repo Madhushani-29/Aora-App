@@ -1,5 +1,5 @@
 import CustomButton from '@/components/CustomButton';
-import { colors, images } from '@/constants';
+import { colors, images, strings } from '@/constants';
 import { useGlobalContext } from '@/context/GlobalProvider';
 import { GlobalContextType } from '@/types/Types';
 import { Redirect, router } from 'expo-router';
@@ -10,6 +10,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 const App = () => {
   const { isLoading, isLoggedIn } = useGlobalContext() as GlobalContextType;
 
+  // if user already logged in 
+  // redirect to home page
   if (!isLoading && isLoggedIn) {
     return <Redirect href="/home" />
   }
@@ -36,9 +38,12 @@ const App = () => {
           <View
             className='relative m-5'>
             <Text
-              className='text-white text-3xl font-bold text-center '>Discover Endless Possibilities with {''}
+              className='text-white text-3xl font-bold text-center '>
+              {strings.appTitleText} {''}
               <Text
-                className='text-secondary-200 text-[30px] font-bold'>Aora</Text>
+                className='text-secondary-200 text-[30px] font-bold'>
+                {strings.appTitleAoraWordText}
+              </Text>
             </Text>
             <Image
               source={images.path}
@@ -47,11 +52,11 @@ const App = () => {
           </View>
           <Text
             className='text-gray-100 mt-[10px] font-pregular text-sm text-center'>
-            Where Creativity Meets Innovation: Embark on a Journey of Limitless Exploration with Aora
+            {strings.appDescriptionText}
           </Text>
           <CustomButton
             handlePress={handlePress}
-            title="Continue with Email" />
+            title={strings.onboardingButtonText} />
         </View>
       </ScrollView>
       <StatusBar
