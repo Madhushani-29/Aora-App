@@ -10,6 +10,7 @@ const colors = {
 
   // loading indicator
   loadingIndicatorLightColor: "#CDCDE0",
+  loadingIndicatorDarkColor: "#FF8E01",
 };
 
 export default colors;

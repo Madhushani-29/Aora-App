@@ -11,6 +11,8 @@ import PoppinsRegular from "../assets/fonts/Poppins-Regular.ttf";
 import PoppinsSemiBold from "../assets/fonts/Poppins-SemiBold.ttf";
 import PoppinsThin from "../assets/fonts/Poppins-Thin.ttf";
 import { GlobalProvider } from '@/context/GlobalProvider';
+import { StatusBar } from 'react-native';
+import { colors } from '@/constants';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -43,6 +45,8 @@ const RootLayout = () => {
           // hide the default app bar
           options={{ headerShown: false }} />
       </Stack>
+      <StatusBar
+        backgroundColor={colors.background} />
     </GlobalProvider>
   )
 }

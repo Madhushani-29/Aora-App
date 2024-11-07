@@ -59,9 +59,6 @@ const App = () => {
             title={strings.onboardingButtonText} />
         </View>
       </ScrollView>
-      <StatusBar
-        backgroundColor={colors.background}
-        style='light' />
     </SafeAreaView>
   );
 }
