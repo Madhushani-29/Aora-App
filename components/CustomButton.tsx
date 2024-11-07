@@ -1,6 +1,7 @@
-import { Text, TouchableOpacity } from 'react-native'
+import { ActivityIndicator, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { CustomButtonProps } from '@/types/component-prop-types'
+import { colors } from '@/constants'
 
 const CustomButton = ({ handlePress, title, isLoading, containerStyles, labelStyles }: CustomButtonProps) => {
   return (
@@ -11,10 +12,14 @@ const CustomButton = ({ handlePress, title, isLoading, containerStyles, labelSty
         ${containerStyles} ${isLoading ? 'opacity-50' : ''}`}
         onPress={handlePress}
         disabled={isLoading}>
-        <Text
-          className={`text-primary font-psemibold text-lg ${labelStyles}`}>
-          {title}
-        </Text>
+        {
+          isLoading
+            ? <ActivityIndicator size="large" color={colors.loadingIndicatorLightColor} />
+            : <Text
+              className='text-primary font-psemibold text-lg '>
+              {title}
+            </Text>
+        }
       </TouchableOpacity>
     </>
   )

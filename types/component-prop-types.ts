@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Control, FieldError } from "react-hook-form";
 
 export type FormInputProps = {
@@ -28,4 +29,8 @@ export type PasswordInputPorps = {
   name: string;
   label?: string;
   placeholder?: string;
+};
+
+export type GlobalProviderProps = {
+  children: ReactNode;
 };

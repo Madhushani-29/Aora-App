@@ -1,5 +1,12 @@
-import { AuthSignInType, AuthSignUpType } from "@/types/Types";
-import { Client, Account, ID, Avatars, Databases } from "react-native-appwrite";
+import { AuthSignInType, AuthSignUpType, UserType } from "@/types/Types";
+import {
+  Client,
+  Account,
+  ID,
+  Avatars,
+  Databases,
+  Query,
+} from "react-native-appwrite";
 
 export const appwriteConfig = {
   endpoint: "https://cloud.appwrite.io/v1",
@@ -80,5 +87,38 @@ export const signIn = async ({ email, password }: AuthSignInType) => {
   } catch (error) {
     console.log(error);
     throw new Error((error as Error).message);
+  }
+};
+
+export const getCurrentUser = async () => {
+  try {
+    // get current logged in account
+    const currentAccount = await account.get();
+    if (!currentAccount) throw Error;
+
+    // get current user from database
+    // query is a appwrite query  feature
+    const currentUser = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectioId,
+      [Query.equal("accountId", currentAccount.$id)]
+    );
+    if (!currentUser) throw Error;
+
+    const userDocument = currentUser.documents[0] as unknown as UserType;
+
+    // Check if the document has the expected structure of UserType
+    if (
+      userDocument.accountId &&
+      userDocument.email &&
+      userDocument.username &&
+      userDocument.avatar
+    ) {
+      return userDocument;
+    } else {
+      throw new Error("User document does not match expected structure");
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

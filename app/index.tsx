@@ -1,12 +1,20 @@
 import CustomButton from '@/components/CustomButton';
 import { colors, images } from '@/constants';
-import { router } from 'expo-router';
+import { useGlobalContext } from '@/context/GlobalProvider';
+import { GlobalContextType } from '@/types/Types';
+import { Redirect, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Image, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const App = () => {
-  const handlePress = () => { 
+  const { isLoading, isLoggedIn } = useGlobalContext() as GlobalContextType;
+
+  if (!isLoading && isLoggedIn) {
+    return <Redirect href="/home" />
+  }
+
+  const handlePress = () => {
     router.push('./sign-up')
   }
 
