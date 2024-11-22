@@ -11,7 +11,6 @@ const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async ({ email, password }: AuthSignInType) => {
-
     setIsLoading(true);
     try {
       const result = await signIn({ email, password });

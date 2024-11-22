@@ -25,6 +25,10 @@ const strings = {
   userNameHintText: "Enter user name",
   emailLabelText: "Email",
   emailHintText: "Enter email",
+
+  // home
+  welcomeText: "Welcome Back",
+  searchBarHintText:"Search for video topic",
 };
 
 export default strings;

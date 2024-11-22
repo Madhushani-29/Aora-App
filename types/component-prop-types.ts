@@ -10,6 +10,16 @@ export type FormInputProps = {
   placeholder?: string;
 };
 
+export interface SearchInputProps {
+  name?: string;
+  label?: string;
+  placeholder?: string;
+  error?: { message: string };
+  value?: string;
+  onChange: (value: string) => void;
+  [key: string]: any;
+}
+
 export type CustomButtonProps = {
   handlePress: (...args: any[]) => void;
   title: string;

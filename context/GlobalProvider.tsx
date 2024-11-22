@@ -10,7 +10,7 @@ import {
 
 // create the context that holds states
 // that can access from anywhere of application
-// it hold globalcontecttype data or undefined
+// it hold globalcontect type data or undefined
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
 // custom hook that can use to access the contect states

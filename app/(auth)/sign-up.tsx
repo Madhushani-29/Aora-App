@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images, strings } from '@/constants';
 import { Link, router } from 'expo-router';
-import { AuthSignInType, AuthSignUpType } from '@/types/Types';
+import { AuthSignUpType } from '@/types/Types';
 import AuthSignUpForm from '@/forms/auth-forms/auth-sign-up-form';
 import { createUser } from '@/lib/appwrite';
 
