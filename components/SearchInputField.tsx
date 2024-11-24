@@ -13,9 +13,9 @@ const SearchInputField = ({
     ...props
 }: SearchInputProps) => {
     return (
-        <View className="mb-4">
+        <View className="w-full items-center flex-row">
             <StyledTextInput
-                className={`shadow appearance-none border-none rounded-lg w-full py-3 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline bg-black-100`}
+                className={`shadow appearance-none border-none rounded-lg w-full py-3 px-3 text-gray-100 leading-tight focus:outline-secondary-100 focus:shadow-outline bg-black-100`}
                 onChangeText={onChange}
                 value={value}
                 placeholder={placeholder}
