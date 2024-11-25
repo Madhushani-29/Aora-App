@@ -13,10 +13,11 @@ export type FormInputProps = {
 export interface SearchInputProps {
   name?: string;
   label?: string;
-  placeholder?: string;
+  placeHolder?: string;
   error?: { message: string };
-  value?: string;
-  onChange: (value: string) => void;
+  value: string;
+  onSearchParamsChange: (value: string) => void;
+  onSearch: (value: string) => void;
   [key: string]: any;
 }
 

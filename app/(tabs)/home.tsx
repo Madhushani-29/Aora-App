@@ -1,6 +1,6 @@
-import { View, Text, ScrollView, ActivityIndicator, FlatList, Image } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { View, Text, ScrollView, ActivityIndicator, FlatList, Image } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useGlobalContext } from '@/context/GlobalProvider';
 import { GlobalContextType } from '@/types/Types';
 import { colors, images, strings } from '@/constants';
@@ -8,11 +8,11 @@ import SearchInputField from '@/components/SearchInputField';
 
 const Home = () => {
   const { isLoggedIn, user, isLoading } = useGlobalContext() as GlobalContextType;
+  const [searchValue, setSearchValue] = useState(''); // State to manage input value
 
   const onSearch = (value: string) => {
-    console.log(value);
-
-  }
+    console.log('Search value:', value); // You can use this for actual search functionality
+  };
 
   if (isLoading) {
     return (
@@ -32,9 +32,7 @@ const Home = () => {
             { $id: 3, name: 'madhu123' },
           ]}
           keyExtractor={(item) => item.$id.toString()}
-          renderItem={({ item }) =>
-            <Text className='text-white'>{item.name}</Text>
-          }
+          renderItem={({ item }) => <Text className='text-white'>{item.name}</Text>}
           ListHeaderComponent={
             <View className='my-6 px-4 space-y-6'>
               <View className='justify-between items-start flex-row mb-6'>
@@ -50,19 +48,25 @@ const Home = () => {
                   <Image
                     source={images.logoSmall}
                     className='w-9 h-10'
-                    resizeMode='contain' />
+                    resizeMode='contain'
+                  />
                 </View>
               </View>
+
+              {/* Pass setSearchValue as the onSearch handler */}
               <SearchInputField
-                placeholder={strings.searchBarHintText}
-                onChange={onSearch} />
+                placeHolder="Search for something..."
+                value={searchValue}
+                onSearch={onSearch} // Update search value on text change
+                onSearchParamsChange={setSearchValue}
+              />
             </View>
           }
           ListFooterComponent={<Text className='text-green-400'>Footer</Text>}
         />
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
