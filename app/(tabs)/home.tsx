@@ -5,13 +5,15 @@ import { useGlobalContext } from '@/context/GlobalProvider';
 import { GlobalContextType } from '@/types/Types';
 import { colors, images, strings } from '@/constants';
 import SearchInputField from '@/components/SearchInputField';
+import Trending from '@/components/Trending';
+import EmptyState from '@/components/EmptyState';
 
 const Home = () => {
   const { isLoggedIn, user, isLoading } = useGlobalContext() as GlobalContextType;
   const [searchValue, setSearchValue] = useState(''); // State to manage input value
 
   const onSearch = (value: string) => {
-    console.log('Search value:', value); // You can use this for actual search functionality
+    console.log('Search value:', value);
   };
 
   if (isLoading) {
@@ -53,16 +55,30 @@ const Home = () => {
                 </View>
               </View>
 
-              {/* Pass setSearchValue as the onSearch handler */}
               <SearchInputField
                 placeHolder="Search for something..."
                 value={searchValue}
-                onSearch={onSearch} // Update search value on text change
+                onSearch={onSearch}
                 onSearchParamsChange={setSearchValue}
               />
+
+              <View className='w-full flex-1 pb-8'>
+                <Text className='text-gray-100 text-lg font-pregular -mb-3'>
+                  Latest Videos
+                </Text>
+              </View>
+              <Trending posts={[
+                { $id: "1", name: 'madhu123' },
+                { $id: "2", name: 'madhu123' },
+                { $id: "3", name: 'madhu123' },
+              ]} />
             </View>
           }
-          ListFooterComponent={<Text className='text-green-400'>Footer</Text>}
+          ListEmptyComponent={() => {
+            return <EmptyState
+              title="No Videos Found"
+              subtitle="Be the first one to upload a video" />
+          }}
         />
       </View>
     </SafeAreaView>

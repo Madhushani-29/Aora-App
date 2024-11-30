@@ -45,3 +45,17 @@ export type PasswordInputPorps = {
 export type GlobalProviderProps = {
   children: ReactNode;
 };
+
+export type TrendingProType = {
+  posts: Posts[];
+};
+
+type Posts = {
+  $id: string;
+  name: string;
+};
+
+export type EmptyStatePropType = {
+  title: string;
+  subtitle: string;
+};
