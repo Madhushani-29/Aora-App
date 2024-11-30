@@ -28,7 +28,12 @@ const strings = {
 
   // home
   welcomeText: "Welcome Back",
-  searchBarHintText:"Search for video topic",
+  searchBarHintText: "Search for video topic",
+  createVideoButtonText: "Create Video",
+  emptyViewTitleText: "No Videos Found",
+  emptyViewSubtitleText: "Be the first one to upload a video",
+  searchbarPlaceholderText: "Search for something...",
+  latestVideoTitleText: "Latest Videos",
 };
 
 export default strings;

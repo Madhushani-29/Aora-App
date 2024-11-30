@@ -24,3 +24,10 @@ export type GlobalContextType = {
   user: UserType | null;
   setUser: React.Dispatch<React.SetStateAction<UserType | null>>;
 };
+
+export type PostType = {
+  title: string;
+  thumbnail: string;
+  video: string;
+  prompt: string;
+};
