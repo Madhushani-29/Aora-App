@@ -30,4 +30,5 @@ export type PostType = {
   thumbnail: string;
   video: string;
   prompt: string;
+  $id: string;
 };

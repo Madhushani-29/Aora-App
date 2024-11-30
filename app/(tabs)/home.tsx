@@ -1,5 +1,5 @@
-import { View, Text, ScrollView, ActivityIndicator, FlatList, Image, RefreshControl } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { View, Text, ActivityIndicator, FlatList, Image, RefreshControl, Alert } from 'react-native';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useGlobalContext } from '@/context/GlobalProvider';
 import { GlobalContextType, PostType } from '@/types/Types';
@@ -8,25 +8,17 @@ import SearchInputField from '@/components/SearchInputField';
 import Trending from '@/components/Trending';
 import EmptyState from '@/components/EmptyState';
 import { getAllPosts } from '@/lib/appwrite';
+import { useAppWrite } from '@/hooks/useAppwrite';
 
 const Home = () => {
   const { isLoggedIn, user, isLoading } = useGlobalContext() as GlobalContextType;
   const [searchValue, setSearchValue] = useState('');
   const [refreshing, setRefreshing] = useState(false);
-  const [posts, setPosts] = useState<PostType[] | []>([]);
-
-  useEffect(() => {
-    getPosts();
-  }, []);
-
-  const getPosts = async () => {
-    const posts: PostType[] = await getAllPosts();
-    setPosts(posts);
-  }
+  const { data: posts, isLoading: isPostsLoading, refetch } = useAppWrite<PostType[]>(getAllPosts);
 
   const onRefresh = async () => {
     setRefreshing(true);
-    getPosts()
+    await refetch();
     setRefreshing(false);
   }
 
@@ -45,13 +37,9 @@ const Home = () => {
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
-        data={[
-          { $id: 1, name: 'madhu123' },
-          { $id: 2, name: 'madhu123' },
-          { $id: 3, name: 'madhu123' },
-        ]}
+        data={posts}
         keyExtractor={(item) => item.$id.toString()}
-        renderItem={({ item }) => <Text className='text-white'>{item.name}</Text>}
+        renderItem={({ item }) => <Text className='text-white'>{item.title}</Text>}
         ListHeaderComponent={
           <View className='my-6 px-4 space-y-6'>
             <View className='justify-between items-start flex-row mb-6'>

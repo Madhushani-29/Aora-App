@@ -59,3 +59,8 @@ export type EmptyStatePropType = {
   title: string;
   subtitle: string;
 };
+
+export type ToastPropType = {
+  text: string;
+  type?: "normal" | "success" | "warning" | "danger" | "custom";
+};

@@ -149,12 +149,12 @@ export const getAllPosts = async (): Promise<PostType[]> => {
       videosCollectioId
     );
 
-    // Validate and transform documents
     const formattedPosts = posts.documents.map((doc) => ({
-      title: doc.title || "Untitled",
-      thumbnail: doc.thumbnail || "",
-      video: doc.video || "",
-      prompt: doc.prompt || "",
+      title: doc.title,
+      thumbnail: doc.thumbnail,
+      video: doc.video,
+      prompt: doc.prompt,
+      $id: doc.$id,
     }));
 
     return formattedPosts;
