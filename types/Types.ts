@@ -31,4 +31,6 @@ export type PostType = {
   video: string;
   prompt: string;
   $id: string;
+  creator: string;
+  avatar: string;
 };

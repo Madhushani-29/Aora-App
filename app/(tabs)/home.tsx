@@ -29,7 +29,7 @@ const Home = () => {
   if (isLoading) {
     return (
       <View className='items-center justify-center h-full w-full bg-primary'>
-        <ActivityIndicator size="large" color={colors.loadingIndicatorDarkColor} />
+        <ActivityIndicator size={50} color={colors.loadingIndicatorDarkColor} />
       </View>
     );
   }

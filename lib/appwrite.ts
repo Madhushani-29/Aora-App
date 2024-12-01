@@ -155,6 +155,8 @@ export const getAllPosts = async (): Promise<PostType[]> => {
       video: doc.video,
       prompt: doc.prompt,
       $id: doc.$id,
+      avatar: doc.avatar,
+      creator: doc.creator,
     }));
 
     return formattedPosts;

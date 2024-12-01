@@ -4,6 +4,7 @@ import { useGlobalContext } from '@/context/GlobalProvider';
 import { GlobalContextType } from '@/types/Types';
 import { Redirect, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context'
 
