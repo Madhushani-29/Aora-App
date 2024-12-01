@@ -34,6 +34,10 @@ const strings = {
   emptyViewSubtitleText: "Be the first one to upload a video",
   searchbarPlaceholderText: "Search for something...",
   latestVideoTitleText: "Latest Videos",
+
+  //alerts
+  queryEmptyAlertTitle: "Missing Query",
+  queryEmptyAlertContent: "Give keywords to search",
 };
 
 export default strings;

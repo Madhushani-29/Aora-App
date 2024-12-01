@@ -10,16 +10,11 @@ export type FormInputProps = {
   placeholder?: string;
 };
 
-export interface SearchInputProps {
-  name?: string;
-  label?: string;
+export type SearchInputProps = {
   placeHolder?: string;
-  error?: { message: string };
-  value: string;
-  onSearchParamsChange: (value: string) => void;
-  onSearch: (value: string) => void;
   [key: string]: any;
-}
+  initialQuery?: string;
+};
 
 export type CustomButtonProps = {
   handlePress: (...args: any[]) => void;

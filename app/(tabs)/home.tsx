@@ -23,10 +23,6 @@ const Home = () => {
     setRefreshing(false);
   }
 
-  const onSearch = (value: string) => {
-    console.log('Search value:', value);
-  };
-
   if (isLoading) {
     return (
       <View className='items-center justify-center h-full w-full bg-primary'>
@@ -34,8 +30,6 @@ const Home = () => {
       </View>
     );
   }
-
-  console.log(posts);
 
   return (
     <SafeAreaView className='bg-primary h-full'>
@@ -72,9 +66,7 @@ const Home = () => {
 
             <SearchInputField
               placeHolder={strings.searchbarPlaceholderText}
-              value={searchValue}
-              onSearch={onSearch}
-              onSearchParamsChange={setSearchValue}
+
             />
 
             <View className='w-full flex-1 pb-8'>

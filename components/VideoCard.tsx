@@ -2,14 +2,11 @@ import { useState } from "react";
 import { AVPlaybackStatus, AVPlaybackStatusSuccess, ResizeMode, Video } from "expo-av";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { icons } from "../constants";
-import { PostType } from "@/types/Types";
 import React from "react";
 import { VideoPopType } from "@/types/component-prop-types";
 
 const VideoCard = ({ title, creator, avatar, thumbnail, video }: VideoPopType) => {
     const [play, setPlay] = useState(false);
-
-    console.log(video);
     
     return (
         <View className="flex flex-col items-center px-4 mb-14">

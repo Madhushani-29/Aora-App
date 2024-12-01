@@ -7,6 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import React from "react";
 
 // create the context that holds states
 // that can access from anywhere of application
