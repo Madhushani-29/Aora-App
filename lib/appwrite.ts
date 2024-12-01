@@ -149,15 +149,20 @@ export const getAllPosts = async (): Promise<PostType[]> => {
       videosCollectioId
     );
 
-    const formattedPosts = posts.documents.map((doc) => ({
-      title: doc.title,
-      thumbnail: doc.thumbnail,
-      video: doc.video,
-      prompt: doc.prompt,
-      $id: doc.$id,
-      avatar: doc.avatar,
-      creator: doc.creator,
-    }));
+    const formattedPosts = posts.documents.map((doc) => {
+      // if creator is a string parse it into a json objecy
+      const creator =
+        typeof doc.creator === "string" ? JSON.parse(doc.creator) : doc.creator;
+      return {
+        title: doc.title,
+        thumbnail: doc.thumbnail,
+        video: doc.video,
+        prompt: doc.prompt,
+        $id: doc.$id,
+        avatar: creator?.avatar || "",
+        creator: creator?.username || "Unknown Creator",
+      };
+    });
 
     return formattedPosts;
   } catch (error) {

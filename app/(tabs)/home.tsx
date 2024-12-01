@@ -9,6 +9,7 @@ import Trending from '@/components/Trending';
 import EmptyState from '@/components/EmptyState';
 import { getAllPosts } from '@/lib/appwrite';
 import { useAppWrite } from '@/hooks/useAppwrite';
+import VideoCard from '@/components/VideoCard';
 
 const Home = () => {
   const { isLoggedIn, user, isLoading } = useGlobalContext() as GlobalContextType;
@@ -34,12 +35,21 @@ const Home = () => {
     );
   }
 
+  console.log(posts);
+
   return (
     <SafeAreaView className='bg-primary h-full'>
       <FlatList
         data={posts}
         keyExtractor={(item) => item.$id.toString()}
-        renderItem={({ item }) => <Text className='text-white'>{item.title}</Text>}
+        renderItem={({ item }) =>
+          <VideoCard
+            title={item.title}
+            thumbnail={item.thumbnail}
+            creator={item.creator}
+            avatar={item.avatar}
+            video={item.video}
+          />}
         ListHeaderComponent={
           <View className='my-6 px-4 space-y-6'>
             <View className='justify-between items-start flex-row mb-6'>

@@ -64,3 +64,11 @@ export type ToastPropType = {
   text: string;
   type?: "normal" | "success" | "warning" | "danger" | "custom";
 };
+
+export type VideoPopType = {
+  title: string;
+  thumbnail: string;
+  video: string;
+  creator: string;
+  avatar: string;
+};
