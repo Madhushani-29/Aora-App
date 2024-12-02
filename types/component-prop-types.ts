@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Control, FieldError } from "react-hook-form";
+import { PostType } from "./Types";
 
 export type FormInputProps = {
   name: string;
@@ -42,12 +43,7 @@ export type GlobalProviderProps = {
 };
 
 export type TrendingProType = {
-  posts: Posts[];
-};
-
-type Posts = {
-  $id: string;
-  name: string;
+  posts: PostType[];
 };
 
 export type EmptyStatePropType = {

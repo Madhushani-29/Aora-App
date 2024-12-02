@@ -8,7 +8,7 @@ const Trending = ({ posts }: TrendingProType) => {
             data={posts}
             horizontal
             keyExtractor={(item) => item.$id}
-            renderItem={({ item }) => <Text className='text-white'>{item.name}</Text>} />
+            renderItem={({ item }) => <Text className='text-white'>{item.title}</Text>} />
     )
 }
 
