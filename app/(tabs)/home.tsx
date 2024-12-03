@@ -5,7 +5,7 @@ import { useGlobalContext } from '@/context/GlobalProvider';
 import { GlobalContextType, PostType } from '@/types/Types';
 import { colors, images, strings } from '@/constants';
 import SearchInputField from '@/components/SearchInputField';
-import Trending from '@/components/Trending';
+import TrendingPosts from '@/components/Trending';
 import EmptyState from '@/components/EmptyState';
 import { getAllPosts, getLatestPosts } from '@/lib/appwrite';
 import { useAppWrite } from '@/hooks/useAppwrite';
@@ -66,16 +66,14 @@ const Home = () => {
             </View>
 
             <SearchInputField
-              placeHolder={strings.searchbarPlaceholderText}
-
-            />
+              placeHolder={strings.searchbarPlaceholderText} />
 
             <View className='w-full flex-1 pb-8'>
-              <Text className='text-gray-100 text-lg font-pregular -mb-3'>
+              <Text className='text-gray-100 text-lg font-pregular -mb-10'>
                 {strings.latestVideoTitleText}
               </Text>
             </View>
-            <Trending posts={latestPosts} />
+            <TrendingPosts posts={latestPosts} />
           </View>
         }
         ListEmptyComponent={() => {

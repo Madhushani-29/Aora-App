@@ -7,7 +7,7 @@ import { VideoPopType } from "@/types/component-prop-types";
 
 const VideoCard = ({ title, creator, avatar, thumbnail, video }: VideoPopType) => {
     const [play, setPlay] = useState(false);
-    
+
     return (
         <View className="flex flex-col items-center px-4 mb-14">
             <View className="flex flex-row gap-3 items-start">
@@ -47,6 +47,7 @@ const VideoCard = ({ title, creator, avatar, thumbnail, video }: VideoPopType) =
                     className="w-full h-60 rounded-xl mt-3"
                     resizeMode={ResizeMode.CONTAIN}
                     useNativeControls
+                    // shouldPlay is set to true, playback will begin as soon as the media is ready
                     shouldPlay
                     onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
                         if (status.isLoaded && (status as AVPlaybackStatusSuccess).didJustFinish) {
@@ -54,7 +55,6 @@ const VideoCard = ({ title, creator, avatar, thumbnail, video }: VideoPopType) =
                         }
                     }}
                 />
-                // <Text className="text-red-500">Playing</Text>
             ) : (
                 <TouchableOpacity
                     activeOpacity={0.7}

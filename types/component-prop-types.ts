@@ -46,6 +46,11 @@ export type TrendingProType = {
   posts: PostType[];
 };
 
+export type TrendingItemPropType = {
+  activeItem: PostType;
+  item: PostType;
+};
+
 export type EmptyStatePropType = {
   title: string;
   subtitle: string;
