@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import TextFromField from '@/components/TextFromField';
 import CustomButton from '@/components/CustomButton';
-import PasswordInputField from '@/components/PassportInputField';
+import PasswordInputField from '@/components/PasswordInputField';
 import { initialValueSignInForm } from '@/constants/form-initial-values';
 import { authSignInFormValidationSchema } from '@/validations/validationSchema';
 import { AuthSignInFormPropType, AuthSignUpFormPropType } from '@/types/form-prop-type';

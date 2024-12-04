@@ -1,7 +1,7 @@
 import { View, TextInput, TouchableOpacity, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { SearchInputProps } from '@/types/component-prop-types';
-import { icons, strings } from '@/constants';
+import { colors, icons, strings } from '@/constants';
 import { Image } from 'react-native';
 import { router, usePathname } from 'expo-router';
 
@@ -19,7 +19,7 @@ const SearchInputField = ({
                 className="text-base mt-0.5 text-white flex-1 font-pregular"
                 value={query}
                 placeholder={placeHolder}
-                placeholderTextColor="#CDCDE0"
+                placeholderTextColor={colors.placeholderTextColor}
                 onChangeText={(e) => setQuery(e)}
             />
 

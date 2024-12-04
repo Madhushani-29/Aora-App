@@ -3,37 +3,51 @@ import React from 'react';
 import { FormInputProps } from '@/types/component-prop-types';
 import { styled } from 'nativewind';
 import { Controller } from 'react-hook-form';
-import { colors } from '@/constants';
 
 const StyledTextInput = styled(TextInput);
 
-const TextFromField = ({ name, control, label, placeholder, error, ...props }: FormInputProps) => {
+const TextFromField = ({
+    name,
+    control,
+    label,
+    placeholder,
+    error,
+    ...props
+}: FormInputProps) => {
     return (
-        <View className="mb-4">
-            <Text className="block text-gray-500 font-bold mb-2">
-                {label}
-            </Text>
-            <Controller
-                control={control}
-                name={name}
-                render={({ field: { onChange, onBlur, value } }) => (
-                    <StyledTextInput
-                        className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline ${error ? 'border-red-500' : ''
-                            }`}
-                        onChangeText={onChange}
-                        onBlur={onBlur}
-                        value={value}
-                        placeholder={placeholder}
-                        placeholderTextColor={colors.inputFieldHintColor}
-                        {...props}
-                    />
-                )}
-            />
+        <View className="space-y-2 mb-4">
+            {label && (
+                <Text className="text-sm font-semibold text-gray-400">
+                    {label}
+                </Text>
+            )}
+            <View
+                className={`flex flex-row items-center space-x-4 w-full h-14 px-4 bg-black-100 rounded-2xl border-2 ${error ? 'border-red-500' : 'border-black-200'
+                    } focus:border-secondary`}
+            >
+                <Controller
+                    control={control}
+                    name={name}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <StyledTextInput
+                            className="flex-1 text-base text-white font-regular"
+                            placeholder={placeholder}
+                            placeholderTextColor="#646470"
+                            onChangeText={onChange}
+                            onBlur={onBlur}
+                            value={value}
+                            {...props}
+                        />
+                    )}
+                />
+            </View>
             {error && (
-                <Text className="text-red-500 text-xs italic">{error.message}</Text>
+                <Text className="text-xs text-red-500">
+                    {error.message}
+                </Text>
             )}
         </View>
     );
-}
+};
 
 export default TextFromField;

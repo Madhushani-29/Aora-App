@@ -6,7 +6,7 @@ import { authSignUpFormValidationSchema } from '@/validations/validationSchema';
 import TextFromField from '@/components/TextFromField';
 import { initialValueSignUpForm } from '@/constants/form-initial-values';
 import CustomButton from '@/components/CustomButton';
-import PasswordInputField from '@/components/PassportInputField';
+import PasswordInputField from '@/components/PasswordInputField';
 import { AuthSignUpFormPropType } from '@/types/form-prop-type';
 import { strings } from '@/constants';
 

@@ -6,7 +6,7 @@ const colors = {
 
   //password input
   passwordInputIconColor: "#CDCDE0",
-  inputFieldHintColor: "#525252",
+  placeholderTextColor: "#646470",
 
   // loading indicator
   loadingIndicatorLightColor: "#CDCDE0",

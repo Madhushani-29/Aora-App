@@ -30,7 +30,7 @@ export type SubmitButtonProps = {
   isLoading?: boolean;
 };
 
-export type PasswordInputPorps = {
+export type PasswordInputProps = {
   control: Control<any>;
   error?: FieldError;
   name: string;
