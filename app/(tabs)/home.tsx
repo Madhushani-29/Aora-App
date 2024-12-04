@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, FlatList, Image, RefreshControl, Alert } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, Image, RefreshControl } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useGlobalContext } from '@/context/GlobalProvider';
@@ -12,8 +12,7 @@ import { useAppWrite } from '@/hooks/useAppwrite';
 import VideoCard from '@/components/VideoCard';
 
 const Home = () => {
-  const { isLoggedIn, user, isLoading } = useGlobalContext() as GlobalContextType;
-  const [searchValue, setSearchValue] = useState('');
+  const { user, isLoading } = useGlobalContext() as GlobalContextType;
   const [refreshing, setRefreshing] = useState(false);
   const { data: posts, isLoading: isPostsLoading, refetch } = useAppWrite<PostType[]>(getAllPosts);
   const { data: latestPosts, isLoading: isLatestPostsLoading, refetch: refetchLatestPosts } = useAppWrite<PostType[]>(getLatestPosts);

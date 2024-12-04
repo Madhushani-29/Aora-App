@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { TextInput, View, TouchableOpacity, Text } from 'react-native';
 import { Controller } from 'react-hook-form';
-import { styled } from 'nativewind';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, strings } from '@/constants';
 import { PasswordInputPorps } from '@/types/component-prop-types';

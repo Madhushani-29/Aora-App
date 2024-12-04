@@ -68,3 +68,10 @@ export type VideoPopType = {
   creator: string;
   avatar: string;
 };
+
+export type InforBoxPropType = {
+  title: string;
+  titleStyles?: string;
+  containerStyles?: string;
+  subtitle?: string;
+};

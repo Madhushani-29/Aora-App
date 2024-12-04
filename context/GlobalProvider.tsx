@@ -22,7 +22,7 @@ export const useGlobalContext = () => useContext(GlobalContext);
 // get components as children which cunsume these contexts
 export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [user, setUser] = useState<UserType | null>(null);
+  const [user, setUser] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // when loading get the values and set to states

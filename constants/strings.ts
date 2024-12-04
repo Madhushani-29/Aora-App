@@ -27,11 +27,12 @@ const strings = {
   emailHintText: "Enter email",
 
   // home
-  welcomeText: "Welcome Back",
+  welcomeText: "Welcome Back,",
   searchBarHintText: "Search for video topic",
   createVideoButtonText: "Create Video",
   emptyViewTitleText: "No Videos Found",
   emptyViewSubtitleText: "Be the first one to upload a video",
+  emptyProfileViewSubtitleText: "Create your first video to start with us",
   emptySearchViewSubtitleText: "No videos for this search found",
   searchbarPlaceholderText: "Search for something...",
   latestVideoTitleText: "Latest Videos",
@@ -41,7 +42,11 @@ const strings = {
   queryEmptyAlertContent: "Give keywords to search",
 
   // search page
-  searchResultText:"Search results",
+  searchResultText: "Search results",
+
+  // profile
+  followersSubtitleText: "Folowers",
+  postsSubtitleText: "Posts",
 };
 
 export default strings;

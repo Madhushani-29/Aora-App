@@ -11,10 +11,13 @@ export type AuthSignInType = {
 
 // user or context type
 export type UserType = {
+  // users appwrite account id
   accountId: string;
   email: string;
   username: string;
   avatar: string;
+  // users doc id
+  $id: string;
 };
 
 export type GlobalContextType = {

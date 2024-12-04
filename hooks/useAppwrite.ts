@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import useAppToast from "./useAppToasts";
-import { getAllPosts } from "@/lib/appwrite";
 
 export const useAppWrite = <T>(fn: () => Promise<T>) => {
   const [data, setData] = useState<T | []>([]);
