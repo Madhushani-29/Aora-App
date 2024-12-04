@@ -3,18 +3,23 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useState } from 'react'
 import { images, strings } from '@/constants'
 import { Link, router } from 'expo-router'
-import { AuthSignInType, AuthSignUpType } from '@/types/Types'
+import { AuthSignInType, GlobalContextType, UserType } from '@/types/Types'
 import AuthSignInForm from '@/forms/auth-forms/auth-sign-in-form'
-import { signIn } from '@/lib/appwrite'
+import { getCurrentUser, signIn } from '@/lib/appwrite'
+import { useGlobalContext } from '@/context/GlobalProvider'
 
 const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { setUser, setIsLoggedIn } = useGlobalContext() as GlobalContextType;
 
   const onSubmit = async ({ email, password }: AuthSignInType) => {
     setIsLoading(true);
     try {
-      const result = await signIn({ email, password });
-      // set it to global state
+      await signIn({ email, password });
+      const result = await getCurrentUser();
+      setUser(result as UserType);
+      setIsLoggedIn(true);
+
       router.push("/home");
     }
     catch (error) {
