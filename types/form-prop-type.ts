@@ -1,4 +1,4 @@
-import { AuthSignInType, AuthSignUpType } from "./Types";
+import { AuthSignInType, AuthSignUpType, CreatePostType } from "./Types";
 
 export type AuthSignInFormPropType = {
   onSubmit: (data: AuthSignInType) => void;
@@ -7,5 +7,10 @@ export type AuthSignInFormPropType = {
 
 export type AuthSignUpFormPropType = {
   onSubmit: (data: AuthSignUpType) => void;
+  isLoading: boolean;
+};
+
+export type CreatePostFormPropType = {
+  onSubmit: (data: CreatePostType) => void;
   isLoading: boolean;
 };

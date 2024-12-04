@@ -47,6 +47,12 @@ const strings = {
   // profile
   followersSubtitleText: "Folowers",
   postsSubtitleText: "Posts",
+
+  // create
+  createTitle: "Upload Video",
+
+  // image uploader
+  imageUploaderHintText: "Choose a file",
 };
 
 export default strings;

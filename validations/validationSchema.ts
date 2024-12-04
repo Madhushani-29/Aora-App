@@ -35,3 +35,10 @@ export const authSignInFormValidationSchema = yup.object({
     )
     .required("Password is required"),
 });
+
+export const createPostFormValidationSchema = yup.object({
+  prompt: yup.string().required("Prompt is required."),
+  thumbnail: yup.string().required("Thumbnail is required."),
+  title: yup.string().required("Title is required."),
+  video: yup.string().required("Video is required."),
+});

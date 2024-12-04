@@ -37,3 +37,11 @@ export type PostType = {
   creator: string;
   avatar: string;
 };
+
+export type CreatePostType = {
+  title: string;
+  thumbnail: string;
+  video: string;
+  prompt: string;
+};
+

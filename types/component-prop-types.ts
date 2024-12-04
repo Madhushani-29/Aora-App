@@ -6,7 +6,7 @@ export type FormInputProps = {
   name: string;
   control: Control<any>;
   label: string;
-  type: string;
+  type?: string;
   error?: FieldError;
   placeholder?: string;
 };
@@ -74,4 +74,11 @@ export type InforBoxPropType = {
   titleStyles?: string;
   containerStyles?: string;
   subtitle?: string;
+};
+
+export type VideoUploadFieldPropType = {
+  label: string;
+  control: Control<any>;
+  name: string;
+  error?: FieldError;
 };
