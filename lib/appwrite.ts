@@ -199,3 +199,32 @@ export const getLatestPosts = async (): Promise<PostType[]> => {
     throw new Error(errorMessage);
   }
 };
+
+export const searchPosts = async (query: string): Promise<PostType[]> => {
+  try {
+    const posts = await databases.listDocuments<Models.Document & PostType>(
+      databaseId,
+      videosCollectioId,
+      [Query.search("title", query)]
+    );
+
+    const formattedPosts = posts.documents.map((doc) => {
+      const creator =
+        typeof doc.creator === "string" ? JSON.parse(doc.creator) : doc.creator;
+      return {
+        title: doc.title,
+        thumbnail: doc.thumbnail,
+        video: doc.video,
+        prompt: doc.prompt,
+        $id: doc.$id,
+        avatar: creator?.avatar || "",
+        creator: creator?.username || "Unknown Creator",
+      };
+    });
+
+    return formattedPosts;
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    throw new Error(errorMessage);
+  }
+};

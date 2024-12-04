@@ -32,12 +32,16 @@ const strings = {
   createVideoButtonText: "Create Video",
   emptyViewTitleText: "No Videos Found",
   emptyViewSubtitleText: "Be the first one to upload a video",
+  emptySearchViewSubtitleText: "No videos for this search found",
   searchbarPlaceholderText: "Search for something...",
   latestVideoTitleText: "Latest Videos",
 
   //alerts
   queryEmptyAlertTitle: "Missing Query",
   queryEmptyAlertContent: "Give keywords to search",
+
+  // search page
+  searchResultText:"Search results",
 };
 
 export default strings;
