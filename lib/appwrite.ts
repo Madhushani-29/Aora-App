@@ -295,11 +295,8 @@ export const getFilePreview = (fileId: string, type: string) => {
     }
 
     if (!fileUrl) {
-      console.log("No image found.");
       throw new Error("No image found.");
     }
-    console.log(fileUrl);
-
     return fileUrl;
   } catch (error) {
     console.log(error);
@@ -328,13 +325,29 @@ export const uploadFile = async (file: any, type: string) => {
   }
 };
 
-export const createPost = async (post: CreatePostType) => {
+export const createPost = async (post: CreatePostType, userId: string) => {
   try {
-    console.log("Data recieved: ", post);
+    if (!userId) {
+      throw new Error("Try again. Cannot verify the current user.");
+    }
     const [thumbnail, video] = await Promise.all([
       uploadFile(post.thumbnail, "image"),
       uploadFile(post.video, "video"),
     ]);
+
+    const newPost = await databases.createDocument(
+      databaseId,
+      videosCollectioId,
+      ID.unique(),
+      {
+        title: post.title,
+        prompt: post.prompt,
+        thumbnail: thumbnail,
+        video: video,
+        creator: userId,
+      }
+    );
+    return newPost;
   } catch (error) {
     console.log(error);
     throw new Error((error as Error).message);

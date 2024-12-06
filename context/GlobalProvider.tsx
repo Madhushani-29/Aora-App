@@ -38,7 +38,6 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
         }
       })
       .catch((error) => {
-        console.log(error);
       })
       .finally(() => {
         setIsLoading(false);

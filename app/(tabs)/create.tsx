@@ -2,18 +2,20 @@ import { View, Text, ScrollView, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { strings } from '@/constants'
-import { CreatePostType } from '@/types/Types'
+import {  CreatePostType, GlobalContextType, PostType } from '@/types/Types'
 import PostCreateForm from '@/forms/post-forms/post-create-form'
 import { router } from 'expo-router'
 import { createPost } from '@/lib/appwrite'
+import { useGlobalContext } from '@/context/GlobalProvider'
 
 const Create = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { user } = useGlobalContext() as GlobalContextType;
 
-  const onSubmit =async (data: CreatePostType) => {
+  const onSubmit = async (data: CreatePostType) => {
     setIsLoading(true);
     try {
-      await createPost(data);
+      await createPost(data, user?.$id!);
       Alert.alert("Success", "Post Uploaded Successfully");
       router.push("/home");
     } catch (error) {
