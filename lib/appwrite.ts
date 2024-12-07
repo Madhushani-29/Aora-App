@@ -2,6 +2,7 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 import {
   AuthSignInType,
   AuthSignUpType,
+  CreatePostType,
   GlobalContextType,
   PostType,
   UserType,
@@ -14,6 +15,8 @@ import {
   Databases,
   Query,
   Models,
+  Storage,
+  ImageGravity,
 } from "react-native-appwrite";
 
 export const appwriteConfig = {
@@ -43,6 +46,7 @@ const client = new Client()
 const account = new Account(client);
 const avatars = new Avatars(client);
 const databases = new Databases(client);
+const storage = new Storage(client);
 
 // register a user
 // code use for testing purpose
@@ -264,6 +268,73 @@ export const signOut = async () => {
   try {
     const session = await account.deleteSession("current");
     return session;
+  } catch (error) {
+    console.log(error);
+    throw new Error((error as Error).message);
+  }
+};
+
+export const getFilePreview = (fileId: string, type: string) => {
+  let fileUrl;
+
+  try {
+    if (type === "video") {
+      fileUrl = storage.getFileView(storageId, fileId);
+    } else if (type === "image") {
+      fileUrl = storage.getFilePreview(
+        storageId,
+        fileId,
+        2000,
+        2000,
+        "center" as ImageGravity,
+        100
+      );
+    } else {
+      console.log("Invaild file type.");
+      throw new Error("Invaild file type.");
+    }
+
+    if (!fileUrl) {
+      console.log("No image found.");
+      throw new Error("No image found.");
+    }
+    console.log(fileUrl);
+
+    return fileUrl;
+  } catch (error) {
+    console.log(error);
+    throw new Error((error as Error).message);
+  }
+};
+
+export const uploadFile = async (file: any, type: string) => {
+  if (!file) {
+    return;
+  }
+
+  const { mimeType, ...rest } = file;
+  const asset = {
+    type: mimeType,
+    ...rest,
+  };
+
+  try {
+    const uploadFile = await storage.createFile(storageId, ID.unique(), asset);
+    const fileUri = await getFilePreview(uploadFile.$id, type);
+    return fileUri;
+  } catch (error) {
+    console.log(error);
+    throw new Error((error as Error).message);
+  }
+};
+
+export const createPost = async (post: CreatePostType) => {
+  try {
+    console.log("Data recieved: ", post);
+    const [thumbnail, video] = await Promise.all([
+      uploadFile(post.thumbnail, "image"),
+      uploadFile(post.video, "video"),
+    ]);
   } catch (error) {
     console.log(error);
     throw new Error((error as Error).message);

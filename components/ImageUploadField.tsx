@@ -7,12 +7,12 @@ import { icons, images, strings } from '@/constants'
 import * as DocumentPicker from 'expo-document-picker';
 
 const ImageUploadField = ({ label, control, name, error }: VideoUploadFieldPropType) => {
-    const openPicker = async (onChange: (uri: string) => void) => {
+    const openPicker = async (onChange: (uri: any) => void) => {
         const result = await DocumentPicker.getDocumentAsync({
             type: ['image/png', 'image/jpg', 'image/jpeg']
         });
         if (!result.canceled) {
-            const uri = result.assets[0].uri;
+            const uri = result.assets[0];
             onChange(uri);
         }
     }
@@ -31,7 +31,7 @@ const ImageUploadField = ({ label, control, name, error }: VideoUploadFieldPropT
                     <TouchableOpacity onPress={() => openPicker(onChange)}>
                         {value ?
                             <Image
-                                source={{ uri: value }}
+                                source={{ uri: value.uri }}
                                 resizeMode='cover'
                                 className='w-full h-64 rounded-2xl' />
                             : <View className='w-full h-16 px-4 bg-black-100 rounded-2xl justify-center items-center border-2 border-black-200 flex-row space-x-2'>

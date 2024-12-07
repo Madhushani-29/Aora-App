@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { useForm } from 'react-hook-form';
+import { FieldError, useForm } from 'react-hook-form';
 import { initialValuePostCreateForm } from '@/constants/form-initial-values';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createPostFormValidationSchema } from '@/validations/validationSchema';
@@ -28,12 +28,12 @@ const PostCreateForm = ({ onSubmit, isLoading }: CreatePostFormPropType) => {
                 control={control}
                 label='Upload Video'
                 name='video'
-                error={errors.video} />
+                error={errors.video as FieldError} />
             <ImageUploadField
                 label="Thumbnail Image"
                 control={control}
                 name="thumbnail"
-                error={errors.thumbnail} />
+                error={errors.thumbnail as FieldError} />
             <TextFromField
                 label="AI Prompt"
                 control={control}

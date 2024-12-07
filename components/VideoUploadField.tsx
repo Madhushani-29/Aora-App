@@ -7,12 +7,12 @@ import { icons, images } from '@/constants'
 import * as DocumentPicker from 'expo-document-picker';
 
 const VideoUploadField = ({ label, control, name, error }: VideoUploadFieldPropType) => {
-    const openPicker = async (onChange: (uri: string) => void) => {
+    const openPicker = async (onChange: (uri: any) => void) => {
         const result = await DocumentPicker.getDocumentAsync({
             type: ['video/mp4', 'video/gif']
         });
         if (!result.canceled) {
-            const uri = result.assets[0].uri;
+            const uri = result.assets[0];
             onChange(uri);
         }
     }
@@ -31,7 +31,7 @@ const VideoUploadField = ({ label, control, name, error }: VideoUploadFieldPropT
                     <TouchableOpacity onPress={() => openPicker(onChange)}>
                         {value ?
                             <Video
-                                source={{ uri: value }}
+                                source={{ uri: value.uri }}
                                 className='w-full h-64 rounded-2xl'
                                 useNativeControls
                                 resizeMode={ResizeMode.COVER}
