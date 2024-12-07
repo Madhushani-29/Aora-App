@@ -9,42 +9,48 @@ import { CreatePostFormPropType } from '@/types/form-prop-type';
 import CustomButton from '@/components/CustomButton';
 import VideoUploadField from '@/components/VideoUploadField';
 import ImageUploadField from '@/components/ImageUploadField';
+import { strings } from '@/constants';
+import { CreatePostType } from '@/types/Types';
 
 const PostCreateForm = ({ onSubmit, isLoading }: CreatePostFormPropType) => {
     const { control, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: initialValuePostCreateForm,
         resolver: yupResolver(createPostFormValidationSchema),
     });
+
+    const handleFormSubmit = (data: CreatePostType) => {
+        onSubmit(data, reset);
+    };
     return (
         <View>
             <TextFromField
-                label="Video Title"
+                label={strings.titleLabel}
                 control={control}
                 name="title"
                 error={errors.title}
-                placeholder="Enter your title"
+                placeholder={strings.titlePlaceholder}
             />
             <VideoUploadField
                 control={control}
-                label='Upload Video'
+                label={strings.videoLabel}
                 name='video'
                 error={errors.video as FieldError} />
             <ImageUploadField
-                label="Thumbnail Image"
+                label={strings.thumbnailtitleText}
                 control={control}
                 name="thumbnail"
                 error={errors.thumbnail as FieldError} />
             <TextFromField
-                label="AI Prompt"
+                label={strings.promptLabel}
                 control={control}
                 name="prompt"
                 error={errors.prompt}
-                placeholder="Enter your prompt"
+                placeholder={strings.promptPlaceholder}
             />
 
             <CustomButton
-                title="Submit & Publish"
-                handlePress={handleSubmit(onSubmit)}
+                title={strings.createPostButtonText}
+                handlePress={handleSubmit(handleFormSubmit)}
                 isLoading={isLoading} />
         </View>
     )

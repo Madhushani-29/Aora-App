@@ -40,8 +40,13 @@ export type PostType = {
 
 export type CreatePostType = {
   title: string;
-  thumbnail: any;
-  video: any;
+  thumbnail?: any;
+  video?: any;
   prompt: string;
 };
 
+export type FileObject = {
+  uri: string;
+  name: string;
+  size: number;
+};

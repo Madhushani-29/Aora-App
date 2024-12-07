@@ -1,5 +1,6 @@
 import * as yup from "yup";
 import { PASSWORD_REGEX, USERNAME_REGEX } from "./regexPatterns";
+import { FileObject } from "@/types/Types";
 
 export const authSignUpFormValidationSchema = yup.object({
   userName: yup
@@ -38,7 +39,15 @@ export const authSignInFormValidationSchema = yup.object({
 
 export const createPostFormValidationSchema = yup.object({
   prompt: yup.string().required("Prompt is required."),
-  thumbnail: yup.mixed().required("Thumbnail is required."),
+  thumbnail: yup
+    .mixed()
+    .test("fileRequired", "Thumbnail is required.", (value) => {
+      const file = value as FileObject;
+      return file && file.uri && file.name && file.size > 0 ? true : false;
+    }),
   title: yup.string().required("Title is required."),
-  video: yup.mixed().required("Video is required."),
+  video: yup.mixed().test("fileRequired", "Video is required.", (value) => {
+    const file = value as FileObject;
+    return file && file.uri && file.name && file.size > 0 ? true : false;
+  }),
 });

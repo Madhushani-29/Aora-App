@@ -40,6 +40,9 @@ const strings = {
   //alerts
   queryEmptyAlertTitle: "Missing Query",
   queryEmptyAlertContent: "Give keywords to search",
+  postCreateSuccessAlertTitle: "Success",
+  postCreateFailedAlertTitle: "Error",
+  postCreateSuccessAlertContent: "Post Uploaded Successfully",
 
   // search page
   searchResultText: "Search results",
@@ -53,6 +56,15 @@ const strings = {
 
   // image uploader
   imageUploaderHintText: "Choose a file",
+
+  // post create form
+  titleLabel: "Video Title",
+  titlePlaceholder: "Enter your title",
+  promptLabel: "AI Prompt",
+  promptPlaceholder: "Enter your prompt",
+  videoLabel: "Upload Video",
+  thumbnailtitleText: "Thumbnail Image",
+  createPostButtonText: "Submit & Publish",
 };
 
 export default strings;
